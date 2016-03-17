@@ -350,4 +350,4 @@ ENTRY(sys_call_table)
 	.long sys_process_vm_writev
 	.long sys_show
 	.long sys_multiply
-	.long min
+	.long sys_min
