@@ -351,3 +351,4 @@ ENTRY(sys_call_table)
 	.long sys_show
 	.long sys_multiply
 	.long sys_min
+	.long sys_status

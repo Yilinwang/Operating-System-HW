@@ -357,10 +357,11 @@
 #define __NR_show	349
 #define __NR_multiply	350
 #define __NR_min	351
+#define __NR_status 352
 
 #ifdef __KERNEL__
 
-#define NR_syscalls 352
+#define NR_syscalls 353
 
 #define __ARCH_WANT_IPC_PARSE_VERSION
 #define __ARCH_WANT_OLD_READDIR

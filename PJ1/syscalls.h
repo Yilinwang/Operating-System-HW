@@ -69,6 +69,7 @@ asmlinkage long sys_mmap(unsigned long, unsigned long, unsigned long,
 asmlinkage int sys_show(void);
 asmlinkage long sys_multiply(long, long);
 asmlinkage long sys_min(long, long);
+asmlinkage int sys_status(void);
 
 #endif /* CONFIG_X86_32 */
 #endif /* _ASM_X86_SYSCALLS_H */
