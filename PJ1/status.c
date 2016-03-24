@@ -5,7 +5,7 @@
 asmlinkage int sys_status(void) {
 	printk("state: %ld\n", current->state);
 	printk("pid: %d\n", current->pid);
-	printk("prio: %d, static_prio: %d, normal_prio: %d\n", current->prio, current->static_prio, normal_prio);
+	printk("prio: %d, static_prio: %d, normal_prio: %d\n", current->prio, current->static_prio, current->normal_prio);
 	printk("fpu_counter: %d\n", current->fpu_counter);
 	printk("policy: %d\n", current->policy);
 	printk("exit_state: %d, exit_code: %d, exit_signal %d\n", current->exit_state, current->exit_code, current->exit_signal);
