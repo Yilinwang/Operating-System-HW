@@ -1,5 +1,5 @@
-#include <list.h>
-#include <sched.h>
+#include <linux/list.h>
+#include <linux/sched.h>
 /*
  * SCHED_WEIGHTED_RR scheduling class. Implements a round robin scheduler with weight
  * priority mechanism.
