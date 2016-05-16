@@ -88,7 +88,7 @@ static struct task_struct *pick_next_task_weighted_rr(struct rq *rq)
 	
 	
 	// not yet implemented
-	return (rq->weighted_rr.nr_running > 0)? list_first_entry(&rq->weighted_rr.queue, struct task_struct, p): NULL;
+	return (rq->weighted_rr.nr_running > 0)? list_first_entry(&rq->weighted_rr.queue, struct task_struct, weighted_rr_list_item): NULL;
 	// ...
 	
 	/* you need to return the selected task here */
