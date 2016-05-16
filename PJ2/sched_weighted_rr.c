@@ -88,7 +88,7 @@ static struct task_struct *pick_next_task_weighted_rr(struct rq *rq)
 	
 	
 	// not yet implemented
-	return list_first_entry_or_null(&rq->weighted_rr.queue, struct task_struct, p);
+	return (rq->weighted_rr.nr_running > 0)? list_first_entry(&rq->weighted_rr.queue, struct task_struct, p): NULL;
 	// ...
 	
 	/* you need to return the selected task here */
@@ -192,7 +192,7 @@ static void task_tick_weighted_rr(struct rq *rq, struct task_struct *p,int queue
 	p->task_time_slice--;
 	if(p->task_time_slice <= 0) {
 		p->task_time_slice = p->weighted_time_slice;
-		set_task_need_resched(p);
+		set_tsk_need_resched(p);
 		requeue_task_weighted_rr(rq, p);
 	}
 	// ...
