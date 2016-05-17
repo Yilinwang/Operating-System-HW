@@ -79,7 +79,7 @@ static struct task_struct *pick_next_task_lifo(struct rq *rq)
 	struct list_head *queue;
 	struct lifo_rq *lifo_rq;
 
-	return (rq->lifo.nr_running > 0)? last_list_entry(&rq->lifo.queue, struct task_struct, lifo_list_item): NULL;
+	return (rq->lifo.nr_running > 0)? list_last_entry(&rq->lifo.queue, struct task_struct, lifo_list_item): NULL;
 }
 
 static void put_prev_task_lifo(struct rq *rq, struct task_struct *p)

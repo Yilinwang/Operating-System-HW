@@ -443,6 +443,7 @@ struct weighted_rr_rq {
 struct lifo_rq {
 	struct list_head queue;
 	unsigned long nr_running;
+	struct list_head *lifo_load_balance_head, *lifo_load_balance_curr;
 };
 
 /* Real-Time classes' related field in a runqueue: */
@@ -6347,7 +6348,7 @@ void rt_mutex_setprio(struct task_struct *p, int prio)
 		if (prev_class == &weighted_rr_sched_class)
 			p->sched_class = &weighted_rr_sched_class;
 		else if (prev_class == &lifo_sched_class)
-			p->sched_calss = &lifo_sched_calss;
+			p->sched_class = &lifo_sched_class;
 		else
 			p->sched_class = &fair_sched_class;
 	}
@@ -7162,6 +7163,7 @@ SYSCALL_DEFINE1(sched_get_priority_max, int, policy)
 
 	switch (policy) {
 	case SCHED_FIFO:
+	case SCHED_LIFO:
 	case SCHED_RR:
 		ret = MAX_USER_RT_PRIO-1;
 		break;
@@ -7172,7 +7174,6 @@ SYSCALL_DEFINE1(sched_get_priority_max, int, policy)
 	case SCHED_WEIGHTED_RR:
 		ret = 0;
 		break;
-	case SCHED_LIFO:
 	}
 	return ret;
 }
@@ -7190,6 +7191,7 @@ SYSCALL_DEFINE1(sched_get_priority_min, int, policy)
 
 	switch (policy) {
 	case SCHED_FIFO:
+	case SCHED_LIFO:
 	case SCHED_RR:
 		ret = 1;
 		break;
@@ -7199,7 +7201,6 @@ SYSCALL_DEFINE1(sched_get_priority_min, int, policy)
 	//+ OS Proj2: weighted_rr
 	case SCHED_WEIGHTED_RR:
 		ret = 0;
-	case SCHED_LIFO:
 	}
 	return ret;
 }
