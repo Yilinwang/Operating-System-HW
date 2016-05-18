@@ -59,7 +59,7 @@ static void requeue_task_lifo(struct rq *rq, struct task_struct *p)
 static void
 yield_task_lifo(struct rq *rq)
 {
-	list_move_tail(&rq->curr->lifo_list_item, &rq->lifo.queue);
+	//list_move_tail(&rq->curr->lifo_list_item, &rq->lifo.queue);
 }
 
 /*
@@ -75,10 +75,6 @@ static void check_preempt_curr_lifo(struct rq *rq, struct task_struct *p, int wa
  */
 static struct task_struct *pick_next_task_lifo(struct rq *rq)
 {
-	struct task_struct *next;
-	struct list_head *queue;
-	struct lifo_rq *lifo_rq;
-
 	return (rq->lifo.nr_running > 0)? list_first_entry(&rq->lifo.queue, struct task_struct, lifo_list_item): NULL;
 }
 
