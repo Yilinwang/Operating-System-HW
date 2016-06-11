@@ -7168,6 +7168,6 @@
 102010677
 671903510
 1608468492
-# of major pagefault: 0
-# of minor pagefault: 6797
-# of resident set size: 26680 KB
+# of major pagefault: 4201
+# of minor pagefault: 2593
+# of resident set size: 26676 KB
