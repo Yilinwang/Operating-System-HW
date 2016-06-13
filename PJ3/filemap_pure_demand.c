@@ -36,6 +36,9 @@
 #include <linux/mm_inline.h> /* for page_is_file_cache() */
 #include "internal.h"
 
+// OSPJ3
+#include <linux/string.h>
+
 /*
  * FIXME: remove all knowledge of the buffer layer from the core VM
  */
@@ -1516,7 +1519,10 @@ int filemap_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
 	pgoff_t size;
 	int ret = 0;
 
-	printk(KERN_CRIT "%s, %X\n", current->comm, vmf->virtual_address);	
+
+	// TODO: for OSPJ3 - pure demand paging
+	if(strcmp(current->comm, "test") == 0)
+		printk(KERN_CRIT "%s, %X\n", current->comm, vmf->virtual_address);	
 
 	size = (i_size_read(inode) + PAGE_CACHE_SIZE - 1) >> PAGE_CACHE_SHIFT;
 	if (offset >= size)
