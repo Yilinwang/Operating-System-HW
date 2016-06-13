@@ -1531,6 +1531,7 @@ int filemap_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
 		 * We found the page, so try async readahead before
 		 * waiting for the lock.
 		 */
+		// TODO: for OSPJ3 - pure demand paging
 		//do_async_mmap_readahead(vma, ra, file, page, offset);
 		lock_page(page);
 
@@ -1542,7 +1543,8 @@ int filemap_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
 		}
 	} else {
 		/* No page in the page cache at all */
-		do_sync_mmap_readahead(vma, ra, file, offset);
+		// TODO: for OSPJ3 - pure demand paging
+		//do_sync_mmap_readahead(vma, ra, file, offset);
 		count_vm_event(PGMAJFAULT);
 		ret = VM_FAULT_MAJOR;
 retry_find:
