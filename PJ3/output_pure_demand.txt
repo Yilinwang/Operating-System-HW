@@ -7169,5 +7169,5 @@
 671903510
 1608468492
 # of major pagefault: 6567
-# of minor pagefault: 228
+# of minor pagefault: 227
 # of resident set size: 26676 KB
